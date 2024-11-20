@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """returns the log message obfuscated"""
 import re
+import logging
 from typing import List
 
 
-import logging
-
+PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
 class RedactingFormatter(logging.Formatter):
     """ Redacting Formatter class
@@ -26,8 +26,6 @@ class RedactingFormatter(logging.Formatter):
         return super().format(record)
 
 
-PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
-
 def get_logger() -> logging.Logger:
     """logger"""
     logger = logging.getLogger('user_data')
@@ -38,6 +36,7 @@ def get_logger() -> logging.Logger:
     steam.setFormatter(fomatter)
     logger.addhandler(stream)
     return logger
+
 
 def filter_datum(fields: List[str],
                  redaction: str, message: str, separator: str) -> str:
