@@ -48,6 +48,7 @@ def filter_datum(fields: List[str],
                          f'{i}={redaction}{separator}', message)
     return message
 
+
 def get_db() -> MySQLConnection:
     """database"""
     usr = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
@@ -56,4 +57,3 @@ def get_db() -> MySQLConnection:
     db = os.getenv('PERSONAL_DATA_DB_NAME')
     con = MySQLConnection(user=usr, password=paswd, host=host, database=db)
     return con
-
