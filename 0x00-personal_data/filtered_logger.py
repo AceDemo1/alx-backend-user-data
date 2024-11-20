@@ -35,8 +35,8 @@ def get_logger() -> logging.Logger:
     logger.propagate = False
     stream = logging.StreamHandler()
     fomatter = RedactingFormatter(PII_FIELDS)
-    steam.setFormatter(fomatter)
-    logger.addhandler(stream)
+    stream.setFormatter(fomatter)
+    logger.addHandler(stream)
     return logger
 
 
