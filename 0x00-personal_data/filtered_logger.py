@@ -2,8 +2,9 @@
 """returns the log message obfuscated"""
 import re
 import logging
+import os
 from typing import List
-
+from mysql.connector.connection import MySQLConnection
 
 PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
@@ -46,3 +47,13 @@ def filter_datum(fields: List[str],
         message = re.sub(f'{i}=.*?{separator}',
                          f'{i}={redaction}{separator}', message)
     return message
+
+def get_db() -> MySQLConnection:
+    """database"""
+    usr = os.getenv('PERSONAL_DATA_DB_USERNAME', 'root')
+    paswd = os.getenv('PERSONAL_DATA_DB_PASSWORD', '')
+    host = os.getenv('PERSONAL_DATA_DB_HOST', 'localhost')
+    db = os.getenv('PERSONAL_DATA_DB_NAME')
+    con = MySQLConnection(user=usr, password=paswd, host=host, database=db)
+    return con
+
