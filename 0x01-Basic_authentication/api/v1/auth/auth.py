@@ -9,7 +9,11 @@ class Auth:
     """define class"""
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """define class"""
-        return False
+        new_path = path if path[-1] == '/' else path + '/'
+        new_excluded_paths = [i if i[-1] == '/' else i + '/' for i in excluded_paths]
+        if new_path in new_excluded_paths:
+            return False
+        return `True
 
     def authorization_header(self, request=None) -> str:
         """define class"""
