@@ -13,7 +13,7 @@ class Auth:
         new_excluded_paths = [i if i[-1] == '/' else i + '/' for i in excluded_paths]
         if new_path in new_excluded_paths:
             return False
-        return `True
+        return True
 
     def authorization_header(self, request=None) -> str:
         """define class"""
