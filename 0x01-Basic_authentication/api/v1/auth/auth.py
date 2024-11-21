@@ -2,7 +2,7 @@
 """class to manage the API authentication"""
 import flask
 import request
-
+from typing import List, TypeVar
 
 class Auth:
     """define class"""
