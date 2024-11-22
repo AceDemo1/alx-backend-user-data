@@ -11,6 +11,6 @@ class BasicAuth(Auth):
         """base64"""
         if (not authorization_header
                 or not isinstance(authorization_header, str)
-                or authorization_header.startswith('Basic ')):
+                or not authorization_header.startswith('Basic ')):
             return None
         return authorization_header[6:]
