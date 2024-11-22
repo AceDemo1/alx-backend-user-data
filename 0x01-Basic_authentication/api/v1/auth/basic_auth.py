@@ -36,4 +36,3 @@ class BasicAuth(Auth):
             return (None, None)
         tuple_res = decoded_base64_authorization_header.split(':')
         return (tuple_res[0], tuple_res[1])
-
