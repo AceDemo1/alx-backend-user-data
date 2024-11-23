@@ -7,6 +7,7 @@ from typing import List, TypeVar
 
 class Auth:
     """define class"""
+
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """define class"""
         if not path or not excluded_paths:
@@ -18,7 +19,7 @@ class Auth:
                 new_excluded_paths.append(i)
             elif i[-1] == '*':
                 if new_path.startswith(i[:-1]):
-                        return False
+                    return False
             else:
                 new_excluded_paths.append(i + '/')
         if new_path in new_excluded_paths:
