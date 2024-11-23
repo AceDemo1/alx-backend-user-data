@@ -12,8 +12,15 @@ class Auth:
         if not path or not excluded_paths:
             return True
         new_path = path if path[-1] == '/' else path + '/'
-        new_excluded_paths = [i if i[-1] == '/' else i + '/'
-                              for i in excluded_paths]
+        new_excluded_paths = []
+        for i in excluded_paths:
+            if i[-1] == '/':
+                new_excluded_paths.append(i)
+            elif i[-1] == '*':
+                if new_aths.startswith(i[:-1]:
+                        return False
+            else:
+                new_excluded_paths.append(i + '/')
         if new_path in new_excluded_paths:
             return False
         return True
